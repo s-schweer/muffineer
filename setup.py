@@ -81,7 +81,7 @@ setup(
     # for example:
     # $ pip install -e .[dev,test]
     extras_require={
-        'dev': ['pytest', 'sphinx', 'sphinx-bootstrap-theme', 'sphinx-autodoc-annotations'],
+        'dev': ['pytest', 'sphinx', 'sphinx-bootstrap-theme', 'sphinx-autodoc-annotation'],
     },
 
     # If there are data files included in your packages that need to be

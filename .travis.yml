@@ -11,6 +11,7 @@ addons:
     - libzmq-dev
 install:
 - python setup.py develop
+- pip install -e .[dev]
 script: pytest
 notifications:
   slack:
