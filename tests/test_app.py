@@ -6,7 +6,7 @@ from falcon import testing
 from muffineer import api
 
 
-@pytest.fixturVe(scope='module')
+@pytest.fixture(scope='module')
 def client():
     # Assume the hypothetical `myapp` package has a
     # function called `create()` to initialize and
