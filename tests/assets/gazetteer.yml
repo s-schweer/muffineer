@@ -1,4 +1,0 @@
-foo: bar
-dns_server: 172.17.0.2
-domains:
- - example.net
