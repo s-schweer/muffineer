@@ -4,7 +4,6 @@ import falcon
 import logging
 
 from muffineer.config import YamlConfig
-from muffineer.resources import zones, records
 from muffineer.middlewares.json_handling import JSONTranslator, RequireJSON
 
 logging.basicConfig(level=logging.INFO)
