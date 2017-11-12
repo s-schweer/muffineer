@@ -1,0 +1,20 @@
+sudo: required
+language: python
+services:
+- docker
+before_install:
+- docker build -t bind docker/bind
+- docker run --name nameserver -d bind
+- docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nameserver
+python:
+#- '2.7'
+- '3.4'
+- '3.5'
+install:
+- pip install -r requirements.txt
+- pip install -r requirements-dev.txt
+- python setup.py develop
+script: pytest
+notifications:
+  slack:
+    secure: quqxEZyHy3vZ4FrvlmXvmUN9J7uHAwWYLtKh0TeRFhI3PeVdw6/xClrTGanvcll6GaVtIoBSTkQTBPkJWKQhSSV1gImV6MYojk6zoyizw/Fats9SK1o8xjGMWS80C17N3O+gCPRFPXj/Orxu5waCRHAhzzCNDolMT3AMroKXht2R5S8Gt+LhTXSF2YNjMRSCKOg+zdZafhyoOig2xf86UDJ5sv/8ISvmTM8UXqK+IXOEyvLUgjvoa5l2AdDXQJwdtgKP/2M1+HGBdP/LSD5BMlbgJiwjNAWqen5IHuq1Xlx01gIp5+2My/7NCcSUUQqllypQkILBzopuI0pdFxXVs1jWd2ty/EGZJYjMOqy+lySUc9UtlHG+TGRl5Pj8KYYX4LL609BkRD4KqbDdLIThUr9gVgG085Yqepc8xrBmGksouvWBfCE9sEV7TVx4z+UYGNSLbSSFNYaLGpo4dP9jFQ7k0u4FXA4f0nl88CbIvM4jpRbCEQ1BaBoC/2Q2vt9xc32fVGExBU382qvbIneP1IJi6fB3gyOJZv2hpiX5F09D5HDr1DMN2zYNiWYsJY3k1PdyE1Q9DlNVhNNiuswH0VXGExrm9m01HP7AnG0jUWrOlUldYkuhbS7gtJPcx7N7cOedTQfXi/L0TRhHmYipQ+fdKM+nZrWWNJ5PJXtDing=
