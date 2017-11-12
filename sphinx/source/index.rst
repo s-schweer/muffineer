@@ -3,18 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. currentmodule:: muffineer
-
 Welcome to Muffineer's documentation!
 =====================================
-
-
-
+.. currentmodule: muffineer
 .. autosummary::
-   :toctree: _autosummary
-   
-.. toctree::
-   :maxdepth: 2
+   :toctree:
+
+
+foo
+---
+alter   
 
 Indices and tables
 ==================
