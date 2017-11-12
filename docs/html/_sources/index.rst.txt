@@ -5,14 +5,13 @@
 
 Welcome to Muffineer's documentation!
 =====================================
-.. currentmodule: muffineer
-.. autosummary::
-   :toctree:
 
-
+.. toctree::
+  
 foo
 ---
 alter   
+
 
 Indices and tables
 ==================
@@ -21,4 +20,3 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
