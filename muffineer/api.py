@@ -3,9 +3,9 @@ import json
 import falcon
 import logging
 
-from gazetteer.config import YamlConfig
-from gazetteer.resources import zones, records
-from gazetteer.middlewares.json_handling import JSONTranslator, RequireJSON
+from muffineer.config import YamlConfig
+from muffineer.resources import zones, records
+from muffineer.middlewares.json_handling import JSONTranslator, RequireJSON
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -34,8 +34,4 @@ def create(config=None):
 
     # things will handle all requests to the '/things' URL path
     app.add_route('/config', config_resource)
-    app.add_route('/zones', zones.ZoneCollectionResource(config))
-    app.add_route('/zones/{zone}', zones.ZoneResource(config))
-    app.add_route('/zones/{zone}/records', records.DnsRecordCollectionResource(config))
-    app.add_route('/zones/{zone}/records/{record}', records.DnsRecordResource(config))
     return app

@@ -1,13 +1,13 @@
 from wsgiref import simple_server
 
 import argparse
-from gazetteer.api import create
+from muffineer.api import create
 
 __author__ = 'Stefan Schweer'
 
 def gather_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-c', '--config', default=gazetteer.yml, help='config file')
+    parser.add_argument('-c', '--config', default=muffineer.yml, help='config file')
     return parser.parse_args()
 
 if __name__ == '__main__':

@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 class YamlConfig(object):
 
-    def __init__(self, config='gazetteer.yml'):
+    def __init__(self, config='muffineer.yml'):
 
         try:
             if not isinstance(config, dict):
