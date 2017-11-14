@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
+SPHINXBUILD   = ../.venv/bin/sphinx-build
 SPHINXPROJ    = Muffineer
 SOURCEDIR     = source
 BUILDDIR      = ../docs
@@ -11,6 +11,9 @@ BUILDDIR      = ../docs
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+apidoc:
+	../.venv/bin/sphinx-apidoc -f -A "Stefan Schweer" -H "Muffineer" -F -d 4 -e -P -o "$(BUILDDIR)" "../muffineer"
+
 
 .PHONY: help Makefile
 
