@@ -100,10 +100,13 @@ def sample_payload_modified():
     }
     return payload
 
+def your_mother(foo,bar):
+    return foo, bar
+
 @pytest.fixture(scope='function')
 def minion_mock(mocker):
     minion = mocker.patch('salt.minion.SMinion', autospec=True)
-    minion.return_value.functions = {'event.send': print}
+    minion.return_value.functions = {'event.send': your_mother}
     return minion
 
 @pytest.fixture(scope='function')
