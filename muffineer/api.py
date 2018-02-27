@@ -1,7 +1,6 @@
 """
 Let's get this party started!
 """
-import json
 import falcon
 import logging
 
