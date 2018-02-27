@@ -8,21 +8,20 @@ import logging
 from muffineer.config import YamlConfig
 from muffineer.middlewares.json_handling import JSONTranslator, RequireJSON
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 # Falcon follows the REST architectural style, meaning (among
 # other things) that you think in terms of resources and state
 # transitions, which map to HTTP verbs.
-class ConfigResource(object):
-    def __init__(self, config):
-        self.config = config
+
+class HealthCheck(object):
+    """Create HealthCheck class."""
 
     def on_get(self, req, resp):
-        """Handles GET requests"""
-        resp.status = falcon.HTTP_200  # This is the default status
-        resp.body = json.dumps(self.config.entries)
+        """Respond on GET request to map endpoint."""
+        resp.status = falcon.HTTP_200
+        app_logger.info('Finished operations on /health GET Request.')
 
 
 def create(config=None):
@@ -31,8 +30,8 @@ def create(config=None):
     app = falcon.API(middleware=[JSONTranslator(),RequireJSON()])
 
     # Resources are represented by long-lived class instances
-    config_resource = ConfigResource(config)
+    health_check = HealthCheck()
 
     # things will handle all requests to the '/things' URL path
-    app.add_route('/config', config_resource)
+    app.add_route('/health', health_check)
     return app

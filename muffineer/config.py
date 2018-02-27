@@ -1,8 +1,31 @@
 import yaml
 import logging
+from logging.config import dictConfig as loggingConfig
 
-logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+
+default_logging = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'stream': 'ext://sys.stdout'
+        },
+        'gelf': {
+            'class': 'djehouty.libgelf.handlers.GELFTCPSocketHandler',
+            'level': 'DEBUG',
+            'host': 'logtarget.svc.dglecom.net',
+            'port': 12222,
+            'static_fields': {'app': 'factfinder_artifactory_sync'}
+        },
+    },
+    'root': {
+        'level': 'DEBUG',
+        'handlers': ['console', 'gelf']
+    }
+}
 
 class YamlConfig(object):
 
@@ -15,10 +38,11 @@ class YamlConfig(object):
                 f.close()
             else:
                 entries = config
+            loggingConfig(entries.get('logging'))
             logger.info('using config file: {}'.format(config))
         except:
-            entries = dict(dns_server='localhost',
-                           domains=['example.net'])
+            entries = dict(logging=default_logging)
+            loggingConfig(entries.get('logging'))
             logger.warning('unable to read config {}, using defaults'.format(config))
         finally:
             self.__dict__.update(entries)

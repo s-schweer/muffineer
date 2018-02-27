@@ -16,7 +16,6 @@ def client():
 
 
 def test_get_config(client):
-    doc = dict()
 
-    result = client.simulate_get('/config')
+    result = client.simulate_get('/health')
     assert result.json == doc
