@@ -13,17 +13,10 @@ default_logging = {
             'level': 'DEBUG',
             'stream': 'ext://sys.stdout'
         },
-        'gelf': {
-            'class': 'djehouty.libgelf.handlers.GELFTCPSocketHandler',
-            'level': 'DEBUG',
-            'host': 'logtarget.svc.dglecom.net',
-            'port': 12222,
-            'static_fields': {'app': 'factfinder_artifactory_sync'}
-        },
     },
     'root': {
         'level': 'DEBUG',
-        'handlers': ['console', 'gelf']
+        'handlers': ['console']
     }
 }
 

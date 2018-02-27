@@ -7,6 +7,7 @@ import logging
 
 from muffineer.config import YamlConfig
 from muffineer.middlewares.json_handling import JSONTranslator, RequireJSON
+from muffineer.resources.bitbucket import BitbucketEventResource
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +22,7 @@ class HealthCheck(object):
     def on_get(self, req, resp):
         """Respond on GET request to map endpoint."""
         resp.status = falcon.HTTP_200
-        app_logger.info('Finished operations on /health GET Request.')
+        logger.info('Finished operations on /health GET Request.')
 
 
 def create(config=None):
@@ -31,7 +32,9 @@ def create(config=None):
 
     # Resources are represented by long-lived class instances
     health_check = HealthCheck()
+    bitbucket_events = BitbucketEventResource()
 
     # things will handle all requests to the '/things' URL path
     app.add_route('/health', health_check)
+    app.add_route('/bitbucket/events', bitbucket_events)
     return app
