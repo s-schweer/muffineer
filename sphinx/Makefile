@@ -14,7 +14,7 @@ help:
 apidoc:
 	../.venv/bin/sphinx-apidoc -f -A "Stefan Schweer" -H "Muffineer" -F -d 4 -e -P -o "$(BUILDDIR)" "../muffineer"
 	cp -f source/conf.py ../docs/conf.py
-	cp -f source/.nojekyll ../docs/
+
 
 
 .PHONY: help Makefile
