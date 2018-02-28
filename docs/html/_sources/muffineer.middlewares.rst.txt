@@ -4,22 +4,10 @@ muffineer\.middlewares package
 Submodules
 ----------
 
-muffineer\.middlewares\.auth module
------------------------------------
+.. toctree::
 
-.. automodule:: muffineer.middlewares.auth
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-muffineer\.middlewares\.json\_handling module
----------------------------------------------
-
-.. automodule:: muffineer.middlewares.json_handling
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   muffineer.middlewares.auth
+   muffineer.middlewares.json_handling
 
 Module contents
 ---------------

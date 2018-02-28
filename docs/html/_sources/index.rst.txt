@@ -1,5 +1,5 @@
 .. Muffineer documentation master file, created by
-   sphinx-quickstart on Sun Nov 12 21:02:23 2017.
+   sphinx-quickstart on Wed Feb 28 17:40:00 2018.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -7,16 +7,15 @@ Welcome to Muffineer's documentation!
 =====================================
 
 .. toctree::
-  
-foo
----
-alter   
+   :maxdepth: 4
+   :caption: Contents:
+
+   muffineer
 
 
 Indices and tables
 ==================
-.. automodule:: muffineer
-   :members:
 
 * :ref:`genindex`
 * :ref:`modindex`
+* :ref:`search`

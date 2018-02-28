@@ -1,6 +1,13 @@
 muffineer\.models package
 =========================
 
+Submodules
+----------
+
+.. toctree::
+
+   muffineer.models.bitbucket
+
 Module contents
 ---------------
 

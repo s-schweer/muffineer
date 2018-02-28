@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>muffineer.middlewares.auth &#8212; Muffineer 0.0.1 documentation</title>
+    <title>muffineer.resources.bitbucket &#8212; Muffineer 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -119,34 +119,39 @@
       </div>
     <div class="col-md-9 content">
       
-  <h1>Source code for muffineer.middlewares.auth</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">falcon</span>
+  <h1>Source code for muffineer.resources.bitbucket</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
-<div class="viewcode-block" id="AuthMiddleware"><a class="viewcode-back" href="../../../muffineer.middlewares.auth.html#muffineer.middlewares.auth.AuthMiddleware">[docs]</a><span class="k">class</span> <span class="nc">AuthMiddleware</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="kn">import</span> <span class="nn">falcon</span>
 
-<div class="viewcode-block" id="AuthMiddleware.process_request"><a class="viewcode-back" href="../../../muffineer.middlewares.auth.html#muffineer.middlewares.auth.AuthMiddleware.process_request">[docs]</a>    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
-        <span class="n">token</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">get_header</span><span class="p">(</span><span class="s1">&#39;Authorization&#39;</span><span class="p">)</span>
-        <span class="n">account_id</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">get_header</span><span class="p">(</span><span class="s1">&#39;Account-ID&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">muffineer.models.bitbucket</span> <span class="k">import</span> <span class="n">PushEvent</span><span class="p">,</span> <span class="n">ModifiedEvent</span><span class="p">,</span> <span class="n">PullrequestEvent</span>
 
-        <span class="n">challenges</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Token type=&quot;Fernet&quot;&#39;</span><span class="p">]</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">description</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Please provide an auth token &#39;</span>
-                           <span class="s1">&#39;as part of the request.&#39;</span><span class="p">)</span>
 
-            <span class="k">raise</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTPUnauthorized</span><span class="p">(</span><span class="s1">&#39;Auth token required&#39;</span><span class="p">,</span>
-                                          <span class="n">description</span><span class="p">,</span>
-                                          <span class="n">challenges</span><span class="p">,</span>
-                                          <span class="n">href</span><span class="o">=</span><span class="s1">&#39;http://docs.example.com/auth&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="BitbucketEventResource"><a class="viewcode-back" href="../../../muffineer.resources.bitbucket.html#muffineer.resources.bitbucket.BitbucketEventResource">[docs]</a><span class="k">class</span> <span class="nc">BitbucketEventResource</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return list of domains</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token_is_valid</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">account_id</span><span class="p">):</span>
-            <span class="n">description</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;The provided auth token is not valid. &#39;</span>
-                           <span class="s1">&#39;Please request a new token and try again.&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="BitbucketEventResource.on_post"><a class="viewcode-back" href="../../../muffineer.resources.bitbucket.html#muffineer.resources.bitbucket.BitbucketEventResource.on_post">[docs]</a>    <span class="k">def</span> <span class="nf">on_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;doc&#39;</span><span class="p">]</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;eventKey&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;repo:modified&#39;</span><span class="p">:</span>
+                <span class="n">event</span> <span class="o">=</span> <span class="n">ModifiedEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;repo:refs_changed&#39;</span><span class="p">:</span>
+                <span class="n">event</span> <span class="o">=</span> <span class="n">PushEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">send</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTPBadRequest</span><span class="p">(</span><span class="s1">&#39;Invalid payload&#39;</span><span class="p">,</span> <span class="s1">&#39;key &quot;eventKey&quot; is not provided&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTPBadRequest</span>
 
-            <span class="k">raise</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTPUnauthorized</span><span class="p">(</span><span class="s1">&#39;Authentication required&#39;</span><span class="p">,</span>
-                                          <span class="n">description</span><span class="p">,</span>
-                                          <span class="n">challenges</span><span class="p">,</span>
-                                          <span class="n">href</span><span class="o">=</span><span class="s1">&#39;http://docs.example.com/auth&#39;</span><span class="p">)</span></div></div>
+        <span class="n">resp</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTP_200</span></div></div>
 </pre></div>
 
     </div>

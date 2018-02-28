@@ -1,7 +1,0 @@
-muffineer
-=========
-
-.. toctree::
-   :maxdepth: 4
-
-   muffineer
