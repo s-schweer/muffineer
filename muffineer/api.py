@@ -27,7 +27,7 @@ class HealthCheck(object):
 def create(config=None):
     config = YamlConfig(config)
     # falcon.API instances are callable WSGI apps
-    app = falcon.API(middleware=[JSONTranslator(),RequireJSON()])
+    app = falcon.API(middleware=[JSONTranslator(), RequireJSON()])
 
     # Resources are represented by long-lived class instances
     health_check = HealthCheck()
