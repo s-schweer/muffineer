@@ -50,6 +50,7 @@ templates_path = ['_templates']
 # source_suffix = ['.rst', '.md']
 source_suffix = '.rst'
 
+
 # The master toctree document.
 master_doc = 'index'
 
@@ -91,6 +92,8 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+html_logo = "muffineer.png"
+
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
@@ -99,8 +102,12 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 # documentation.
 #
 html_theme_options = {
-    'bootswatch_theme': 'flatly'
+    'bootswatch_theme': 'flatly',
+    'navbar_links': [
+                        ("Git Repo", "https://github.com/s-schweer/muffineer", True),
+                    ],
 }
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
