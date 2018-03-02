@@ -6,20 +6,19 @@ SPHINXOPTS    =
 SPHINXBUILD   = ../.venv/bin/sphinx-build
 SPHINXPROJ    = Muffineer
 SOURCEDIR     = source
-BUILDDIR      = ../docs
+BUILDDIR      = build
 
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 apidoc:
-	rm -rf ../docs/conf.py
 	../.venv/bin/sphinx-apidoc -f -A "Stefan Schweer" -H "Muffineer" -F -d 4 -e -P -o "$(BUILDDIR)" "../muffineer"
-	cp -f source/conf.py ../docs/
-	cp -f source/index.rst ../docs/
-	cp -rf source/_templates/* ../docs/_templates/
-	cp -rf source/documentation ../docs/
+
+
 
 gh-pages: apidoc html
+	rm -rf ../docs/*
+	cp -rf build/html/* ../docs/
 
 .PHONY: help apidoc gh-pages Makefile
 

@@ -22,7 +22,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='{}'.format(popen('git describe').readlines()[0].strip()),
+    version='{}'.format(popen('git describe --tags --always').readlines()[0].strip()),
 
     description='Standalone Salt API',
     long_description=long_description,
