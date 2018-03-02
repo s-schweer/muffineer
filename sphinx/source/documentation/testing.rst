@@ -1,3 +1,2 @@
-
-Testing Muffineer
-=====================================
+Running the test suite
+======================

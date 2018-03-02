@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Muffineer documentation build configuration file, created by
-# sphinx-quickstart on Fri Mar  2 14:32:27 2018.
+# sphinx-quickstart on Fri Mar  2 15:01:20 2018.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
