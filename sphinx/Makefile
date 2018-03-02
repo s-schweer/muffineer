@@ -10,9 +10,11 @@ BUILDDIR      = build
 
 # Put it first so that "make" without argument is like "make help".
 help:
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "${BUILDDIR}" $(SPHINXOPTS) $(O)
 apidoc:
-	../.venv/bin/sphinx-apidoc -f -A "Stefan Schweer" -H "Muffineer" -F -d 4 -e -P -o "$(BUILDDIR)" "../muffineer"
+	rm -rf source/apidoc
+	../.venv/bin/sphinx-apidoc -f -A "Stefan Schweer" -H "Muffineer" -F -d 4 -e -P -o "source/apidoc" "../muffineer"
+	rm -rf source/apidoc/index.rst
 
 
 
@@ -25,6 +27,6 @@ gh-pages: apidoc html
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	@$(SPHINXBUILD) -M $@ "../docs" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 

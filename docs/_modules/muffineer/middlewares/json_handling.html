@@ -64,7 +64,7 @@
       aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../muffineer.html">muffineer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidoc/muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
 </li>
@@ -120,7 +120,7 @@
 </form><ul class="globaltoc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../muffineer.html">muffineer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidoc/muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
         </div>
@@ -131,9 +131,9 @@
 <span></span><span class="kn">import</span> <span class="nn">falcon</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<div class="viewcode-block" id="RequireJSON"><a class="viewcode-back" href="../../../muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.RequireJSON">[docs]</a><span class="k">class</span> <span class="nc">RequireJSON</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="RequireJSON"><a class="viewcode-back" href="../../../apidoc/muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.RequireJSON">[docs]</a><span class="k">class</span> <span class="nc">RequireJSON</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-<div class="viewcode-block" id="RequireJSON.process_request"><a class="viewcode-back" href="../../../muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.RequireJSON.process_request">[docs]</a>    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
+<div class="viewcode-block" id="RequireJSON.process_request"><a class="viewcode-back" href="../../../apidoc/muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.RequireJSON.process_request">[docs]</a>    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">req</span><span class="o">.</span><span class="n">client_accepts_json</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTPNotAcceptable</span><span class="p">(</span>
                 <span class="s1">&#39;This API only supports responses encoded as JSON.&#39;</span><span class="p">,</span>
@@ -146,9 +146,9 @@
                     <span class="n">href</span><span class="o">=</span><span class="s1">&#39;http://docs.examples.com/api/json&#39;</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="JSONTranslator"><a class="viewcode-back" href="../../../muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.JSONTranslator">[docs]</a><span class="k">class</span> <span class="nc">JSONTranslator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="JSONTranslator"><a class="viewcode-back" href="../../../apidoc/muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.JSONTranslator">[docs]</a><span class="k">class</span> <span class="nc">JSONTranslator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-<div class="viewcode-block" id="JSONTranslator.process_request"><a class="viewcode-back" href="../../../muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.JSONTranslator.process_request">[docs]</a>    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
+<div class="viewcode-block" id="JSONTranslator.process_request"><a class="viewcode-back" href="../../../apidoc/muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.JSONTranslator.process_request">[docs]</a>    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
         <span class="c1"># req.stream corresponds to the WSGI wsgi.input environ variable,</span>
         <span class="c1"># and allows you to read bytes from the request body.</span>
         <span class="c1">#</span>
@@ -172,7 +172,7 @@
                                    <span class="s1">&#39;JSON was incorrect or not encoded as &#39;</span>
                                    <span class="s1">&#39;UTF-8.&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="JSONTranslator.process_response"><a class="viewcode-back" href="../../../muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.JSONTranslator.process_response">[docs]</a>    <span class="k">def</span> <span class="nf">process_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="n">resource</span><span class="p">):</span>
+<div class="viewcode-block" id="JSONTranslator.process_response"><a class="viewcode-back" href="../../../apidoc/muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.JSONTranslator.process_response">[docs]</a>    <span class="k">def</span> <span class="nf">process_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="n">resource</span><span class="p">):</span>
         <span class="k">if</span> <span class="s1">&#39;result&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">req</span><span class="o">.</span><span class="n">context</span><span class="p">:</span>
             <span class="k">return</span>
 

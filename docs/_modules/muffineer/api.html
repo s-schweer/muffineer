@@ -64,7 +64,7 @@
       aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../muffineer.html">muffineer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apidoc/muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
 </li>
@@ -120,7 +120,7 @@
 </form><ul class="globaltoc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../muffineer.html">muffineer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apidoc/muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
         </div>
@@ -145,16 +145,16 @@
 <span class="c1"># other things) that you think in terms of resources and state</span>
 <span class="c1"># transitions, which map to HTTP verbs.</span>
 
-<div class="viewcode-block" id="HealthCheck"><a class="viewcode-back" href="../../muffineer.api.html#muffineer.api.HealthCheck">[docs]</a><span class="k">class</span> <span class="nc">HealthCheck</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="HealthCheck"><a class="viewcode-back" href="../../apidoc/muffineer.api.html#muffineer.api.HealthCheck">[docs]</a><span class="k">class</span> <span class="nc">HealthCheck</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Create HealthCheck class.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="HealthCheck.on_get"><a class="viewcode-back" href="../../muffineer.api.html#muffineer.api.HealthCheck.on_get">[docs]</a>    <span class="k">def</span> <span class="nf">on_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
+<div class="viewcode-block" id="HealthCheck.on_get"><a class="viewcode-back" href="../../apidoc/muffineer.api.html#muffineer.api.HealthCheck.on_get">[docs]</a>    <span class="k">def</span> <span class="nf">on_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Respond on GET request to map endpoint.&quot;&quot;&quot;</span>
         <span class="n">resp</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTP_200</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Finished operations on /health GET Request.&#39;</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="create"><a class="viewcode-back" href="../../muffineer.api.html#muffineer.api.create">[docs]</a><span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="create"><a class="viewcode-back" href="../../apidoc/muffineer.api.html#muffineer.api.create">[docs]</a><span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">YamlConfig</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
     <span class="c1"># falcon.API instances are callable WSGI apps</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">falcon</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">middleware</span><span class="o">=</span><span class="p">[</span><span class="n">JSONTranslator</span><span class="p">(),</span> <span class="n">RequireJSON</span><span class="p">()])</span>

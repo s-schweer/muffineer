@@ -64,7 +64,7 @@
       aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../muffineer.html">muffineer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidoc/muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
 </li>
@@ -120,7 +120,7 @@
 </form><ul class="globaltoc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../muffineer.html">muffineer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidoc/muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
         </div>
@@ -130,28 +130,28 @@
   <h1>Source code for muffineer.models.bitbucket</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">salt.client</span>
 
-<div class="viewcode-block" id="BitbucketEvent"><a class="viewcode-back" href="../../../muffineer.models.bitbucket.html#muffineer.models.bitbucket.BitbucketEvent">[docs]</a><span class="k">class</span> <span class="nc">BitbucketEvent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="BitbucketEvent"><a class="viewcode-back" href="../../../apidoc/muffineer.models.bitbucket.html#muffineer.models.bitbucket.BitbucketEvent">[docs]</a><span class="k">class</span> <span class="nc">BitbucketEvent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;/bitbucket/event&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">caller</span> <span class="o">=</span> <span class="n">salt</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">Caller</span><span class="p">()</span>
 
-<div class="viewcode-block" id="BitbucketEvent.send"><a class="viewcode-back" href="../../../muffineer.models.bitbucket.html#muffineer.models.bitbucket.BitbucketEvent.send">[docs]</a>    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BitbucketEvent.send"><a class="viewcode-back" href="../../../apidoc/muffineer.models.bitbucket.html#muffineer.models.bitbucket.BitbucketEvent.send">[docs]</a>    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">caller</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="s1">&#39;event.send&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="PushEvent"><a class="viewcode-back" href="../../../muffineer.models.bitbucket.html#muffineer.models.bitbucket.PushEvent">[docs]</a><span class="k">class</span> <span class="nc">PushEvent</span><span class="p">(</span><span class="n">BitbucketEvent</span><span class="p">):</span>
+<div class="viewcode-block" id="PushEvent"><a class="viewcode-back" href="../../../apidoc/muffineer.models.bitbucket.html#muffineer.models.bitbucket.PushEvent">[docs]</a><span class="k">class</span> <span class="nc">PushEvent</span><span class="p">(</span><span class="n">BitbucketEvent</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">BitbucketEvent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;/bitbucket/event/push&#39;</span></div>
 
-<div class="viewcode-block" id="ModifiedEvent"><a class="viewcode-back" href="../../../muffineer.models.bitbucket.html#muffineer.models.bitbucket.ModifiedEvent">[docs]</a><span class="k">class</span> <span class="nc">ModifiedEvent</span><span class="p">(</span><span class="n">BitbucketEvent</span><span class="p">):</span>
+<div class="viewcode-block" id="ModifiedEvent"><a class="viewcode-back" href="../../../apidoc/muffineer.models.bitbucket.html#muffineer.models.bitbucket.ModifiedEvent">[docs]</a><span class="k">class</span> <span class="nc">ModifiedEvent</span><span class="p">(</span><span class="n">BitbucketEvent</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">BitbucketEvent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;/bitbucket/event/modified&#39;</span></div>
 
 
-<div class="viewcode-block" id="PullrequestEvent"><a class="viewcode-back" href="../../../muffineer.models.bitbucket.html#muffineer.models.bitbucket.PullrequestEvent">[docs]</a><span class="k">class</span> <span class="nc">PullrequestEvent</span><span class="p">(</span><span class="n">BitbucketEvent</span><span class="p">):</span>
+<div class="viewcode-block" id="PullrequestEvent"><a class="viewcode-back" href="../../../apidoc/muffineer.models.bitbucket.html#muffineer.models.bitbucket.PullrequestEvent">[docs]</a><span class="k">class</span> <span class="nc">PullrequestEvent</span><span class="p">(</span><span class="n">BitbucketEvent</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">BitbucketEvent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;/bitbucket/event/pullrequest&#39;</span></div>

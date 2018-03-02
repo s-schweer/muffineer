@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Overview: module code &#8212; Muffineer 0.0.1 documentation</title>
+    <title>muffineer.api module &#8212; Muffineer 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="muffineer.cli module" href="muffineer.cli.html" />
+    <link rel="prev" title="muffineer.resources.bitbucket module" href="muffineer.resources.bitbucket.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -62,9 +64,9 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../apidoc/muffineer.html">Muffneer Autodoc</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
 </li>
@@ -77,19 +79,34 @@
      href="#">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"
       role="menu"
-      aria-labelledby="dLabelLocalToc"></ul>
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">muffineer.api module</a></li>
+</ul>
+</ul>
 </li>
               
             
             
               
                 
+  <li>
+    <a href="muffineer.resources.bitbucket.html" title="Previous Chapter: muffineer.resources.bitbucket module"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; muffineer.res...</span>
+    </a>
+  </li>
+  <li>
+    <a href="muffineer.cli.html" title="Next Chapter: muffineer.cli module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">muffineer.cli module &raquo;</span>
+    </a>
+  </li>
               
             
             
             
             
-              <li class="hidden-sm"></li>
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/apidoc/muffineer.api.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
             
           </ul>
 
@@ -117,25 +134,42 @@
  </div>
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
-</form><ul class="globaltoc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
-<ul>
+</form><ul>
+<li><a class="reference internal" href="#">muffineer.api module</a></li>
+</ul>
+<ul class="globaltoc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../apidoc/muffineer.html">Muffneer Autodoc</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
         </div>
       </div>
     <div class="col-md-9 content">
       
-  <h1>All modules for which code is available</h1>
-<ul><li><a href="muffineer/api.html">muffineer.api</a></li>
-<li><a href="muffineer/cli.html">muffineer.cli</a></li>
-<li><a href="muffineer/config.html">muffineer.config</a></li>
-<li><a href="muffineer/middlewares/auth.html">muffineer.middlewares.auth</a></li>
-<li><a href="muffineer/middlewares/json_handling.html">muffineer.middlewares.json_handling</a></li>
-<li><a href="muffineer/models/bitbucket.html">muffineer.models.bitbucket</a></li>
-<li><a href="muffineer/resources/bitbucket.html">muffineer.resources.bitbucket</a></li>
-</ul>
+  <div class="section" id="module-muffineer.api">
+<span id="muffineer-api-module"></span><h1>muffineer.api module<a class="headerlink" href="#module-muffineer.api" title="Permalink to this headline">¶</a></h1>
+<p>Let’s get this party started!</p>
+<dl class="class">
+<dt id="muffineer.api.HealthCheck">
+<em class="property">class </em><code class="descclassname">muffineer.api.</code><code class="descname">HealthCheck</code><a class="reference internal" href="../_modules/muffineer/api.html#HealthCheck"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#muffineer.api.HealthCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Create HealthCheck class.</p>
+<dl class="method">
+<dt id="muffineer.api.HealthCheck.on_get">
+<code class="descname">on_get</code><span class="sig-paren">(</span><em>req</em>, <em>resp</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/muffineer/api.html#HealthCheck.on_get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#muffineer.api.HealthCheck.on_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Respond on GET request to map endpoint.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="muffineer.api.create">
+<code class="descclassname">muffineer.api.</code><code class="descname">create</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/muffineer/api.html#create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#muffineer.api.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
 
     </div>
       

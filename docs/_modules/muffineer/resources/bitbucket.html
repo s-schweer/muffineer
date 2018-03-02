@@ -64,7 +64,7 @@
       aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../muffineer.html">muffineer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidoc/muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
 </li>
@@ -120,7 +120,7 @@
 </form><ul class="globaltoc"><p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../documentation/testing.html">Testing Muffineer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../muffineer.html">muffineer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidoc/muffineer.html">Muffneer Autodoc</a></li>
 </ul>
 </ul>
         </div>
@@ -139,12 +139,12 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="BitbucketEventResource"><a class="viewcode-back" href="../../../muffineer.resources.bitbucket.html#muffineer.resources.bitbucket.BitbucketEventResource">[docs]</a><span class="k">class</span> <span class="nc">BitbucketEventResource</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="BitbucketEventResource"><a class="viewcode-back" href="../../../apidoc/muffineer.resources.bitbucket.html#muffineer.resources.bitbucket.BitbucketEventResource">[docs]</a><span class="k">class</span> <span class="nc">BitbucketEventResource</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return list of domains</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="BitbucketEventResource.on_post"><a class="viewcode-back" href="../../../muffineer.resources.bitbucket.html#muffineer.resources.bitbucket.BitbucketEventResource.on_post">[docs]</a>    <span class="k">def</span> <span class="nf">on_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
+<div class="viewcode-block" id="BitbucketEventResource.on_post"><a class="viewcode-back" href="../../../apidoc/muffineer.resources.bitbucket.html#muffineer.resources.bitbucket.BitbucketEventResource.on_post">[docs]</a>    <span class="k">def</span> <span class="nf">on_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">event</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;doc&#39;</span><span class="p">]</span>
             <span class="n">key</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;eventKey&#39;</span><span class="p">]</span>

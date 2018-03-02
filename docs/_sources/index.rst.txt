@@ -8,18 +8,14 @@ Welcome to Muffineer's documentation!
 .. image:: https://travis-ci.org/s-schweer/muffineer.svg?branch=master
     :target: https://travis-ci.org/s-schweer/muffineer
 
-
 .. toctree::
    :titlesonly:
-   :maxdepth: 4
+   :maxdepth: 1
    :glob:
    :caption: Table of Contents
 
    documentation/*
-   muffineer
-
-Indices and tables
-==================
+   Muffneer Autodoc <apidoc/muffineer.rst>
 
 * :ref:`genindex`
 * :ref:`modindex`
