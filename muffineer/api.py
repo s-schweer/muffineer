@@ -7,6 +7,7 @@ import logging
 from muffineer.config import YamlConfig
 from muffineer.middlewares.json_handling import JSONTranslator, RequireJSON
 from muffineer.resources.bitbucket import BitbucketEventResource
+from muffineer.resources.gogs import GogsEventResource
 
 logger = logging.getLogger(__name__)
 
