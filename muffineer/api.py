@@ -33,8 +33,10 @@ def create(config=None):
     # Resources are represented by long-lived class instances
     health_check = HealthCheck()
     bitbucket_events = BitbucketEventResource()
+    gogs_events = GogsEventResource()
 
     # things will handle all requests to the '/things' URL path
     app.add_route('/health', health_check)
     app.add_route('/bitbucket/events', bitbucket_events)
+    app.add_route('/gogs/events', gogs_events)
     return app

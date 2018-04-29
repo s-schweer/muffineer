@@ -3,8 +3,7 @@ import logging
 
 import falcon
 
-from muffineer.models.bitbucket import PushEvent, ModifiedEvent, PullrequestEvent
-
+from muffineer.models.gogs import PushEvent
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -15,18 +14,8 @@ class GogsEventResource(object):
     """
 
     def on_post(self, req, resp):
-        try:
-            event = req.context['doc']
-            key = event['eventKey']
-            if key == 'repo:modified':
-                event = ModifiedEvent(event)
-            elif key == 'repo:refs_changed':
-                event = PushEvent(event)
-            event.send()
-        except KeyError:
-            raise falcon.HTTPBadRequest('Invalid payload', 'key "eventKey" is not provided')
-        except Exception as e:
-            logger.error(e)
-            raise falcon.HTTPBadRequest
-
+        event = req.context['doc']
+        key = req.get_header('X-Gogs-Signature', required=True)
+        event = PushEvent(event)
+        event.send()
         resp.status = falcon.HTTP_200

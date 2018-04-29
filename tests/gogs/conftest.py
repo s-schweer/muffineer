@@ -73,7 +73,7 @@ def sample_payload_push():
           "email": "u@gogs.io",
           "username": "gogs"
         },
-        "private": false
+        "private": False
       },
       "pusher": {
         "name": "unknwon",
