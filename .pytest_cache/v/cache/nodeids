@@ -1,8 +1,0 @@
-[
-  "tests/test_app.py::test_get_health",
-  "tests/bitbucket/test_post_modified.py::test_post_modified",
-  "tests/bitbucket/test_post_push.py::test_post_modified",
-  "tests/bitbucket/test_post_push.py::test_post_push_invalid_payload",
-  "tests/gogs/test_post_push.py::test_post_modified",
-  "tests/gogs/test_post_push.py::test_post_push_no_signature"
-]
