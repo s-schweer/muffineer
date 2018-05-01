@@ -48,6 +48,13 @@ class JSONTranslator(object):
                                    'UTF-8.')
 
     def process_response(self, req, resp, resource):
+        """
+
+        :param req:
+        :param resp:
+        :param resource:
+        :return:
+        """
         if 'result' not in req.context:
             return
 
@@ -60,14 +67,13 @@ class JSONTranslator(object):
             This method is only called when the request matches
             a route to a resource.
 
-        Args:
-            req: Request object that will be passed to the
+        :param req: Request object that will be passed to the
                 routed responder.
-            resp: Response object that will be passed to the
+        :param resp: Response object that will be passed to the
                 responder.
-            resource: Resource object to which the request was
+        :param resource: Resource object to which the request was
                 routed.
-            params: A dict-like object representing any additional
+        :param params: A dict-like object representing any additional
                 params derived from the route's URI template fields,
                 that will be passed to the resource's responder
                 method as keyword arguments.

@@ -21,6 +21,7 @@ apidoc:
 gh-pages: apidoc html
 	rm -rf ../docs/*
 	cp -rf build/html/* ../docs/
+	cp source/CNAME ../docs/
 
 .PHONY: help apidoc gh-pages Makefile
 

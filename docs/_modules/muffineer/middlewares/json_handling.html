@@ -170,6 +170,13 @@
                                    <span class="s1">&#39;UTF-8.&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="JSONTranslator.process_response"><a class="viewcode-back" href="../../../apidoc/muffineer.middlewares.json_handling.html#muffineer.middlewares.json_handling.JSONTranslator.process_response">[docs]</a>    <span class="k">def</span> <span class="nf">process_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">,</span> <span class="n">resource</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param req:</span>
+<span class="sd">        :param resp:</span>
+<span class="sd">        :param resource:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s1">&#39;result&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">req</span><span class="o">.</span><span class="n">context</span><span class="p">:</span>
             <span class="k">return</span>
 
@@ -182,14 +189,13 @@
 <span class="sd">            This method is only called when the request matches</span>
 <span class="sd">            a route to a resource.</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            req: Request object that will be passed to the</span>
+<span class="sd">        :param req: Request object that will be passed to the</span>
 <span class="sd">                routed responder.</span>
-<span class="sd">            resp: Response object that will be passed to the</span>
+<span class="sd">        :param resp: Response object that will be passed to the</span>
 <span class="sd">                responder.</span>
-<span class="sd">            resource: Resource object to which the request was</span>
+<span class="sd">        :param resource: Resource object to which the request was</span>
 <span class="sd">                routed.</span>
-<span class="sd">            params: A dict-like object representing any additional</span>
+<span class="sd">        :param params: A dict-like object representing any additional</span>
 <span class="sd">                params derived from the route&#39;s URI template fields,</span>
 <span class="sd">                that will be passed to the resource&#39;s responder</span>
 <span class="sd">                method as keyword arguments.</span>
