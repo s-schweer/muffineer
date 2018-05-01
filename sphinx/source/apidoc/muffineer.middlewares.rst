@@ -1,5 +1,5 @@
-muffineer\.middlewares package
-==============================
+muffineer.middlewares package
+=============================
 
 Submodules
 ----------

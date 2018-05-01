@@ -1,5 +1,5 @@
-muffineer\.config module
-========================
+muffineer.config module
+=======================
 
 .. automodule:: muffineer.config
     :members:

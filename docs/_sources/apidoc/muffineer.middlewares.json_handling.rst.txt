@@ -1,5 +1,5 @@
-muffineer\.middlewares\.json\_handling module
-=============================================
+muffineer.middlewares.json\_handling module
+===========================================
 
 .. automodule:: muffineer.middlewares.json_handling
     :members:

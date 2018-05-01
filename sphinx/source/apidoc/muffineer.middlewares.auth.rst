@@ -1,5 +1,5 @@
-muffineer\.middlewares\.auth module
-===================================
+muffineer.middlewares.auth module
+=================================
 
 .. automodule:: muffineer.middlewares.auth
     :members:

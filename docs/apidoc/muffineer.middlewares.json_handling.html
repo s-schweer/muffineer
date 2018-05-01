@@ -2,20 +2,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>muffineer.middlewares.json_handling module &#8212; Muffineer 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -32,8 +24,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -153,11 +144,37 @@
 <dl class="class">
 <dt id="muffineer.middlewares.json_handling.JSONTranslator">
 <em class="property">class </em><code class="descclassname">muffineer.middlewares.json_handling.</code><code class="descname">JSONTranslator</code><a class="reference internal" href="../_modules/muffineer/middlewares/json_handling.html#JSONTranslator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#muffineer.middlewares.json_handling.JSONTranslator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Serializes Json Object and optionally validates it with Marshmallow</p>
 <dl class="method">
 <dt id="muffineer.middlewares.json_handling.JSONTranslator.process_request">
 <code class="descname">process_request</code><span class="sig-paren">(</span><em>req</em>, <em>resp</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/muffineer/middlewares/json_handling.html#JSONTranslator.process_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#muffineer.middlewares.json_handling.JSONTranslator.process_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="muffineer.middlewares.json_handling.JSONTranslator.process_resource">
+<code class="descname">process_resource</code><span class="sig-paren">(</span><em>req</em>, <em>resp</em>, <em>resource</em>, <em>params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/muffineer/middlewares/json_handling.html#JSONTranslator.process_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#muffineer.middlewares.json_handling.JSONTranslator.process_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process the request after routing.</p>
+<dl class="docutils">
+<dt>Note:</dt>
+<dd>This method is only called when the request matches
+a route to a resource.</dd>
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>req: Request object that will be passed to the</dt>
+<dd>routed responder.</dd>
+<dt>resp: Response object that will be passed to the</dt>
+<dd>responder.</dd>
+<dt>resource: Resource object to which the request was</dt>
+<dd>routed.</dd>
+<dt>params: A dict-like object representing any additional</dt>
+<dd>params derived from the route’s URI template fields,
+that will be passed to the resource’s responder
+method as keyword arguments.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="muffineer.middlewares.json_handling.JSONTranslator.process_response">
@@ -169,7 +186,7 @@
 <dl class="class">
 <dt id="muffineer.middlewares.json_handling.RequireJSON">
 <em class="property">class </em><code class="descclassname">muffineer.middlewares.json_handling.</code><code class="descname">RequireJSON</code><a class="reference internal" href="../_modules/muffineer/middlewares/json_handling.html#RequireJSON"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#muffineer.middlewares.json_handling.RequireJSON" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
 <dt id="muffineer.middlewares.json_handling.RequireJSON.process_request">
 <code class="descname">process_request</code><span class="sig-paren">(</span><em>req</em>, <em>resp</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/muffineer/middlewares/json_handling.html#RequireJSON.process_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#muffineer.middlewares.json_handling.RequireJSON.process_request" title="Permalink to this definition">¶</a></dt>
@@ -192,7 +209,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Stefan Schweer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.<br/>
     </p>
   </div>
 </footer>

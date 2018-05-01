@@ -1,5 +1,5 @@
-muffineer\.cli module
-=====================
+muffineer.cli module
+====================
 
 .. automodule:: muffineer.cli
     :members:

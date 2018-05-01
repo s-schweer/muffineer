@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>muffineer.resources.bitbucket &#8212; Muffineer 0.0.1 documentation</title>
+    <title>muffineer.models.gogs &#8212; Muffineer 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
@@ -119,39 +119,23 @@
       </div>
     <div class="col-md-9 content">
       
-  <h1>Source code for muffineer.resources.bitbucket</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">logging</span>
+  <h1>Source code for muffineer.models.gogs</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">salt.client</span>
 
-<span class="kn">import</span> <span class="nn">falcon</span>
+<div class="viewcode-block" id="GogsEvent"><a class="viewcode-back" href="../../../apidoc/muffineer.models.gogs.html#muffineer.models.gogs.GogsEvent">[docs]</a><span class="k">class</span> <span class="nc">GogsEvent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;/gogs/event&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">caller</span> <span class="o">=</span> <span class="n">salt</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">Caller</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">muffineer.models.bitbucket</span> <span class="k">import</span> <span class="n">PushEvent</span><span class="p">,</span> <span class="n">ModifiedEvent</span><span class="p">,</span> <span class="n">PullrequestEvent</span>
-
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<div class="viewcode-block" id="GogsEvent.send"><a class="viewcode-back" href="../../../apidoc/muffineer.models.gogs.html#muffineer.models.gogs.GogsEvent.send">[docs]</a>    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">caller</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="s1">&#39;event.send&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="BitbucketEventResource"><a class="viewcode-back" href="../../../apidoc/muffineer.resources.bitbucket.html#muffineer.resources.bitbucket.BitbucketEventResource">[docs]</a><span class="k">class</span> <span class="nc">BitbucketEventResource</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return list of domains</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="BitbucketEventResource.on_post"><a class="viewcode-back" href="../../../apidoc/muffineer.resources.bitbucket.html#muffineer.resources.bitbucket.BitbucketEventResource.on_post">[docs]</a>    <span class="k">def</span> <span class="nf">on_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">event</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;doc&#39;</span><span class="p">]</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;eventKey&#39;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;repo:modified&#39;</span><span class="p">:</span>
-                <span class="n">event</span> <span class="o">=</span> <span class="n">ModifiedEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;repo:refs_changed&#39;</span><span class="p">:</span>
-                <span class="n">event</span> <span class="o">=</span> <span class="n">PushEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-            <span class="n">event</span><span class="o">.</span><span class="n">send</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTPBadRequest</span><span class="p">(</span><span class="s1">&#39;Invalid payload&#39;</span><span class="p">,</span> <span class="s1">&#39;key &quot;eventKey&quot; is not provided&#39;</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTPBadRequest</span>
-
-        <span class="n">resp</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">falcon</span><span class="o">.</span><span class="n">HTTP_200</span></div></div>
+<div class="viewcode-block" id="PushEvent"><a class="viewcode-back" href="../../../apidoc/muffineer.models.gogs.html#muffineer.models.gogs.PushEvent">[docs]</a><span class="k">class</span> <span class="nc">PushEvent</span><span class="p">(</span><span class="n">GogsEvent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">GogsEvent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;/gogs/event/push&#39;</span></div>
 </pre></div>
 
     </div>

@@ -1,5 +1,5 @@
-muffineer\.resources\.bitbucket module
-======================================
+muffineer.resources.bitbucket module
+====================================
 
 .. automodule:: muffineer.resources.bitbucket
     :members:

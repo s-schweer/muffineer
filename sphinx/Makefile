@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD   = ../.venv/bin/sphinx-build
+SPHINXBUILD   = ../venv/bin/sphinx-build
 SPHINXPROJ    = Muffineer
 SOURCEDIR     = source
 BUILDDIR      = build
@@ -13,7 +13,7 @@ help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "${BUILDDIR}" $(SPHINXOPTS) $(O)
 apidoc:
 	rm -rf source/apidoc
-	../.venv/bin/sphinx-apidoc -f -A "Stefan Schweer" -H "Muffineer" -F -d 4 -e -P -o "source/apidoc" "../muffineer"
+	../venv/bin/sphinx-apidoc -f -A "Stefan Schweer" -H "Muffineer" -F -d 4 -e -P -o "source/apidoc" "../muffineer"
 	rm -rf source/apidoc/index.rst
 
 

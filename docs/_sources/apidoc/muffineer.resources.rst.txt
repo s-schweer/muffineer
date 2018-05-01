@@ -1,5 +1,5 @@
-muffineer\.resources package
-============================
+muffineer.resources package
+===========================
 
 Submodules
 ----------
@@ -7,6 +7,7 @@ Submodules
 .. toctree::
 
    muffineer.resources.bitbucket
+   muffineer.resources.gogs
 
 Module contents
 ---------------

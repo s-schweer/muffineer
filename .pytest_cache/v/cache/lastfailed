@@ -1,0 +1,4 @@
+{
+  "tests/gogs/test_post_modified.py::test_post_modified": true,
+  "tests/gogs/test_post_push.py::test_post_push_invalid_payload": true
+}

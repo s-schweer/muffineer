@@ -1,5 +1,5 @@
-muffineer\.models package
-=========================
+muffineer.models package
+========================
 
 Submodules
 ----------
@@ -7,6 +7,7 @@ Submodules
 .. toctree::
 
    muffineer.models.bitbucket
+   muffineer.models.gogs
 
 Module contents
 ---------------

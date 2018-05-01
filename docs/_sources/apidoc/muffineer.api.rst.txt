@@ -1,5 +1,5 @@
-muffineer\.api module
-=====================
+muffineer.api module
+====================
 
 .. automodule:: muffineer.api
     :members:
