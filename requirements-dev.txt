@@ -3,7 +3,7 @@ Babel==2.5.1
 docutils==0.14
 imagesize==0.7.1
 py==1.4.34
-Pygments==2.2.0
+Pygments==2.7.4
 pytest==3.2.3
 pytest-falcon==0.4.2
 pytest-mock==1.7.0
